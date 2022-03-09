@@ -23,7 +23,12 @@ public class Kunde {
         };
     }
 
-    public double getGesamtGebuehr() {
+    @Deprecated
+    public void account(int minuten, int stunde, int minute) {
+        this.bucheGespraech(new Gespraech(new Zeitpunkt(stunde, minute), minuten, tarif));
+    }
+
+    public double getGebuehr() {
         return gesamtGebuehr;
     }
 }

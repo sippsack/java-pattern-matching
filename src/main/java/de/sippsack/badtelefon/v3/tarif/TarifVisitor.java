@@ -1,6 +1,5 @@
 package de.sippsack.badtelefon.v3.tarif;
 
-import de.sippsack.badtelefon.v31.Tarif;
 import de.sippsack.badtelefon.v3.Zeitpunkt;
 
 public interface TarifVisitor {

@@ -22,7 +22,7 @@ public class TarifeRunner {
 				k.bucheGespraech(gespraech);
 			}
 			
-			System.out.println("Abrechnung: " + k.getGesamtGebuehr());
+			System.out.println("Abrechnung: " + k.getGebuehr());
 		}
 	}
 }
