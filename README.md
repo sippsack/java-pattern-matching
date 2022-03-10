@@ -26,8 +26,18 @@ Es gibt verschiedene Packages:
 * Lösungsansatz mit dem **Visitor-Pattern**
 * bisheriger Ansatz in OOP, wenn man die Klassen selbst nicht ändern konnte und/oder man alternative Vorgehensweisen (zweiter Visitor) umsetzen muss
 
+## de.sippsack.badtelefon.v31
+
+* Lösungsansatz mit dem **Visitor-Pattern** ähnlich wie v3
+* allerdings **generischer Visitor mit Typparameter** und Pattern Matching for switch
+
 ## de.sippsack.badtelefon.v4
 
 * Lösung mit dem **Pattern Matching**
 * konsequente Nutzung moderner Ansätze (Switch Expression, Sealed Classes, Records)
 * Domänenstruktur in Sealed Classes, Geschäftslogik in Klasse Kunde via Pattern Matching for switch
+
+## de.sippsack.badtelefon.v5
+
+* Lösung mit dem **Pattern Matching** ähnlich wie v4
+* Versuch zu einem feingranulareren Domänen-Modell für bessere Les-, Wart- und Wiederverwendbarkeit

@@ -1,4 +1,4 @@
-package de.sippsack.badtelefon.v4.tarif;
+package de.sippsack.badtelefon.v5.tarif;
 
 public record Business(boolean keyAccountCustomer) implements Tarif {
 

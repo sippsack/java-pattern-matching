@@ -1,10 +1,10 @@
-package de.sippsack.badtelefon.v4;
+package de.sippsack.badtelefon.v5;
 
-import de.sippsack.badtelefon.v4.Kunde;
-import de.sippsack.badtelefon.v4.tarif.*;
+import de.sippsack.badtelefon.v5.Kunde;
+import de.sippsack.badtelefon.v5.tarif.Business;
+import de.sippsack.badtelefon.v5.tarif.Privat;
+import de.sippsack.badtelefon.v5.tarif.Profi;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

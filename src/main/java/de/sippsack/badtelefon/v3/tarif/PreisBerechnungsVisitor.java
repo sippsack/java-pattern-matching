@@ -8,7 +8,7 @@ public class PreisBerechnungsVisitor implements TarifVisitor {
     @Override
     public void visit(PrivatTarif privatTarif, int minuten, Zeitpunkt zeitpunkt) {
         var nettoMinuten = Math.max(minuten - 1, 0);
-        gebuehr += nettoMinuten * (zeitpunkt.isMondschein() ? 0.69 : 1.99);
+        gebuehr += nettoMinuten * (zeitpunkt.isMondschein() ? PrivatTarif.MONDSCHEINPREIS : 1.99);
     }
 
     @Override

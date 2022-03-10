@@ -1,6 +1,6 @@
-package de.sippsack.badtelefon.v4;
+package de.sippsack.badtelefon.v5;
 
-import de.sippsack.badtelefon.v4.tarif.Tarif;
+import de.sippsack.badtelefon.v5.tarif.Tarif;
 
 public record Gespraech(Zeitpunkt start, Zeitpunkt ende, Tarif tarif) {
     public Gespraech {

@@ -1,6 +1,6 @@
-package de.sippsack.badtelefon.v3.tarif;
+package de.sippsack.badtelefon.v31.tarif;
 
-import de.sippsack.badtelefon.v3.Zeitpunkt;
+import de.sippsack.badtelefon.v31.Zeitpunkt;
 
 public class PrivatTarif extends Tarif {
 
