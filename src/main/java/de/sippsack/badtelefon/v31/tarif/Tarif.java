@@ -1,4 +1,4 @@
 package de.sippsack.badtelefon.v31.tarif;
 
-public abstract class Tarif {
+public sealed interface Tarif permits BusinessTarif, PrivatTarif, ProfiTarif {
 }
