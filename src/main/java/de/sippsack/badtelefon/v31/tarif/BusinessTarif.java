@@ -1,11 +1,20 @@
 package de.sippsack.badtelefon.v31.tarif;
 
-import de.sippsack.badtelefon.v31.Zeitpunkt;
-
 public class BusinessTarif extends Tarif {
+    public static final double PREISPROMINUTE = 1.29;
+    public static final double MONDSCHEINPREISPROMINUTE = 0.79;
+    private final boolean vipKunde;
 
-    @Override
-    public void accept(TarifVisitor visitor, int minuten, Zeitpunkt zeitpunkt) {
-        visitor.visit(this, minuten, zeitpunkt);
+    public BusinessTarif() {
+        this(false);
     }
+
+    public BusinessTarif(boolean vipKunde) {
+        this.vipKunde = vipKunde;
+    }
+
+    public boolean isVipKunde() {
+        return vipKunde;
+    }
+
 }

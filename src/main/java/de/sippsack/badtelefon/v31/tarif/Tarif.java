@@ -4,13 +4,7 @@ import de.sippsack.badtelefon.v31.Zeitpunkt;
 
 public abstract class Tarif {
 
-	public abstract void accept(TarifVisitor visitor, int minuten, Zeitpunkt zeitpunkt);
-
-	public static Tarif of(Type type) {
-		return switch(type) {
-			case PRIVAT -> new PrivatTarif();
-			case BUSINESS -> new BusinessTarif();
-			case PROFI -> new ProfiTarif();
-		};
+	public final void accept(TarifVisitor<Tarif> visitor, int minuten, Zeitpunkt zeitpunkt) {
+		visitor.visit(this, minuten, zeitpunkt);
 	}
 }

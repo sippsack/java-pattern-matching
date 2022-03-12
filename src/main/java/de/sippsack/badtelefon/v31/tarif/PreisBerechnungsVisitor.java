@@ -11,14 +11,21 @@ public class PreisBerechnungsVisitor<T extends Tarif> implements TarifVisitor<T>
 
     @Override
     public void visit(T tarif, int minuten, Zeitpunkt zeitpunkt) {
-        gebuehr += switch(tarif) {
-            case PrivatTarif privat -> {
-                var nettoMinuten = Math.max(minuten - 1, 0);
-                yield nettoMinuten * (zeitpunkt.isMondschein() ? PrivatTarif.MONDSCHEINPREIS : 1.99);
-            }
-            case BusinessTarif business -> minuten * (zeitpunkt.isMondschein() ? 0.79 : 1.29);
-            case ProfiTarif profi -> minuten * 0.69;
-            default -> 60; // bei unbekannten/ungültigen Tarif kostet das Gespräch pauschal 60 Euro (Schwarztelefonieren)
-        };
+        if (tarif instanceof PrivatTarif) {
+            var privatTarif = (PrivatTarif) tarif;
+            var factor = (100 - privatTarif.getRabatt()) / 100;
+            var minutenPreis = zeitpunkt.isMondschein() ? PrivatTarif.MONDSCHEINPREISPROMINUTE : PrivatTarif.PREISPROMINUTE;
+            var nettoMinuten = privatTarif.getNettoMinuten(minuten);
+            gebuehr += factor * nettoMinuten * minutenPreis;
+        } else if (tarif instanceof BusinessTarif) {
+            var businessTarif = (BusinessTarif) tarif;
+            var factor = businessTarif.isVipKunde() ? 0.8 : 1.0;
+            double minutenPreis = zeitpunkt.isMondschein() ? BusinessTarif.MONDSCHEINPREISPROMINUTE : BusinessTarif.PREISPROMINUTE;
+            gebuehr += factor * minuten * minutenPreis;
+        } else if (tarif instanceof ProfiTarif) {
+            gebuehr += minuten * ProfiTarif.PREISPROMINUTE;
+        } else {
+            gebuehr += 60;
+        }
     }
 }

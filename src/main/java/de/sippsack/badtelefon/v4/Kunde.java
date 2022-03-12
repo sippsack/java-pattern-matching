@@ -15,22 +15,25 @@ public class Kunde {
     }
 
     public void bucheGespraech(Zeitpunkt zeitpunkt, int dauer) {
-        gesamtGebuehr += switch(tarif) {
+        gesamtGebuehr += switch (tarif) {
             case null -> 60; // bei leeren/ungültigen Tarif kostet jedes Gespräch pauschal 60,- ("Schwarztelefonieren")
             case Privat privat -> {
                 var factor = (100 - privat.rabatt()) / 100;
-                yield factor * privat.getNettoMinuten(dauer) * (zeitpunkt.isMondschein() ? privat.MONDSCHEINPREISPROMINUTE : privat.PREISPROMINUTE);
+                var nettoMinuten = privat.getNettoMinuten(dauer);
+                var minutenPreis = zeitpunkt.isMondschein() ? Privat.MONDSCHEINPREISPROMINUTE : Privat.PREISPROMINUTE;
+                yield factor * nettoMinuten * minutenPreis;
             }
-            case Profi profi -> dauer * profi.PREISPROMINUTE;
+            case Profi profi -> dauer * Profi.PREISPROMINUTE;
             case Business business -> {
                 var factor = business.keyAccountCustomer() ? 0.8 : 1.0;
-                yield factor * dauer * (zeitpunkt.isMondschein() ? business.MONDSCHEINPREISPROMINUTE : business.PREISPROMINUTE);
+                var minutenPreis = zeitpunkt.isMondschein() ? Business.MONDSCHEINPREISPROMINUTE : Business.PREISPROMINUTE;
+                yield factor * dauer * minutenPreis;
             }
         };
     }
 
     public void account(int minuten, int stunde, int minute) {
-        this.bucheGespraech(new Zeitpunkt(stunde, minute), minuten);
+        bucheGespraech(new Zeitpunkt(stunde, minute), minuten);
     }
 
     public double getGebuehr() {
