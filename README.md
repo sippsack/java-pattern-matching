@@ -50,3 +50,7 @@ _raus, ich finde 3.1 hier besser. Damit können wir direkt mit IntelliJ Type Pat
 
 * Lösung mit dem **Pattern Matching** ähnlich wie v4
 * Versuch zu einem feingranulareren Domänen-Modell für bessere Les-, Wart- und Wiederverwendbarkeit
+
+## Schritte zur Lösung
+
+1. **PreisBerechnungsVisitor** instanceof & cast durch Type Patterns ersetzen
