@@ -54,3 +54,6 @@ _raus, ich finde 3.1 hier besser. Damit können wir direkt mit IntelliJ Type Pat
 ## Schritte zur Lösung
 
 1. **PreisBerechnungsVisitor** instanceof & cast durch Type Patterns ersetzen
+2. **PreisBerechnungsVisitor** If Kaskade durch switch (old-schoole) ersetzten
+    * Beachte hier: {} sind notwendig damit die variablen sich nicht abschatten
+    * default Branch auch ;)

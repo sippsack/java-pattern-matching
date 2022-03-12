@@ -11,19 +11,24 @@ public class PreisBerechnungsVisitor<T extends Tarif> implements TarifVisitor<T>
 
     @Override
     public void visit(T tarif, int minuten, Zeitpunkt zeitpunkt) {
-        if (tarif instanceof PrivatTarif privatTarif) {
-            var factor = (100 - privatTarif.getRabatt()) / 100;
-            var minutenPreis = zeitpunkt.isMondschein() ? PrivatTarif.MONDSCHEINPREISPROMINUTE : PrivatTarif.PREISPROMINUTE;
-            var nettoMinuten = privatTarif.getNettoMinuten(minuten);
-            gebuehr += factor * nettoMinuten * minutenPreis;
-        } else if (tarif instanceof BusinessTarif businessTarif) {
-            var factor = businessTarif.isVipKunde() ? 0.8 : 1.0;
-            double minutenPreis = zeitpunkt.isMondschein() ? BusinessTarif.MONDSCHEINPREISPROMINUTE : BusinessTarif.PREISPROMINUTE;
-            gebuehr += factor * minuten * minutenPreis;
-        } else if (tarif instanceof ProfiTarif) {
-            gebuehr += minuten * ProfiTarif.PREISPROMINUTE;
-        } else {
-            gebuehr += 60;
+        switch (tarif) {
+            case PrivatTarif privatTarif: {
+                var factor = (100 - privatTarif.getRabatt()) / 100;
+                var minutenPreis = zeitpunkt.isMondschein() ? PrivatTarif.MONDSCHEINPREISPROMINUTE : PrivatTarif.PREISPROMINUTE;
+                var nettoMinuten = privatTarif.getNettoMinuten(minuten);
+                gebuehr += factor * nettoMinuten * minutenPreis;
+                break;
+            }
+            case BusinessTarif businessTarif: {
+                var factor = businessTarif.isVipKunde() ? 0.8 : 1.0;
+                double minutenPreis = zeitpunkt.isMondschein() ? BusinessTarif.MONDSCHEINPREISPROMINUTE : BusinessTarif.PREISPROMINUTE;
+                gebuehr += factor * minuten * minutenPreis;
+                break;
+            }
+            case ProfiTarif ignore:
+                gebuehr += minuten * ProfiTarif.PREISPROMINUTE;
+            default:
+                gebuehr += 60;
         }
     }
 }
