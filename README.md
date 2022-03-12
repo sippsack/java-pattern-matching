@@ -61,3 +61,4 @@ _raus, ich finde 3.1 hier besser. Damit können wir direkt mit IntelliJ Type Pat
     * addition hoch ziehen
     * yield bei multiline
     * explicites null handling
+4. **Kunde** einführen der Visitor-Logik und Löschen der Visitor
