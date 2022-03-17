@@ -18,10 +18,13 @@ public class PreisBerechnungsVisitor<T extends Tarif> implements TarifVisitor<T>
                 var nettoMinuten = privatTarif.getNettoMinuten(minuten);
                 yield factor * nettoMinuten * minutenPreis;
             }
-            case BusinessTarif businessTarif -> {
-                var factor = businessTarif.isVipKunde() ? 0.8 : 1.0;
+            case BusinessTarif businessTarif && businessTarif.isVipKunde() -> {
                 var minutenPreis = zeitpunkt.isMondschein() ? BusinessTarif.MONDSCHEINPREISPROMINUTE : BusinessTarif.PREISPROMINUTE;
-                yield factor * minuten * minutenPreis;
+                yield 0.8 * minuten * minutenPreis;
+            }
+            case BusinessTarif ignore -> {
+                var minutenPreis = zeitpunkt.isMondschein() ? BusinessTarif.MONDSCHEINPREISPROMINUTE : BusinessTarif.PREISPROMINUTE;
+                yield minuten * BusinessTarif.MONDSCHEINPREISPROMINUTE;
             }
             case ProfiTarif ignore -> minuten * ProfiTarif.PREISPROMINUTE;
             case null, default -> 60;
