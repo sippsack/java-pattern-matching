@@ -1,9 +1,9 @@
 package de.sippsack.badtelefon.v3;
 
 import de.sippsack.badtelefon.v3.tarif.BusinessTarif;
-import de.sippsack.badtelefon.v3.tarif.Tarif;
 import de.sippsack.badtelefon.v3.tarif.PrivatTarif;
 import de.sippsack.badtelefon.v3.tarif.ProfiTarif;
+import de.sippsack.badtelefon.v3.tarif.Tarif;
 
 import java.util.Arrays;
 import java.util.Random;
