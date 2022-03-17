@@ -17,7 +17,7 @@ public class Kunde {
     public void account(int minuten, Zeitpunkt zeitpunkt) {
         gesamtGebuer += switch (tarif) {
             case PrivatTarif privatTarif -> {
-                var factor = (100 - privatTarif.getRabatt()) / 100;
+                var factor = (100 - privatTarif.rabatt()) / 100;
                 var minutenPreis = zeitpunkt.isMondschein() ? PrivatTarif.MONDSCHEINPREISPROMINUTE : PrivatTarif.PREISPROMINUTE;
                 var nettoMinuten = privatTarif.getNettoMinuten(minuten);
                 yield factor * nettoMinuten * minutenPreis;
@@ -31,7 +31,7 @@ public class Kunde {
                 yield minuten * minutenPreis;
             }
             case ProfiTarif ignore -> minuten * ProfiTarif.PREISPROMINUTE;
-            case null, default -> 60;
+            case null -> 60;
         };
     }
 

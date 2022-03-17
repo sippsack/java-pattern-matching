@@ -1,8 +1,9 @@
 package de.sippsack.badtelefon.v3.tarif;
 
-public class BusinessTarif extends Tarif {
+public non-sealed class BusinessTarif implements Tarif{
     public static final double PREISPROMINUTE = 1.29;
     public static final double MONDSCHEINPREISPROMINUTE = 0.79;
+
     private final boolean vipKunde;
 
     public BusinessTarif() {
@@ -16,5 +17,4 @@ public class BusinessTarif extends Tarif {
     public boolean isVipKunde() {
         return vipKunde;
     }
-
 }
