@@ -1,8 +1,22 @@
 # Demoprojekt für Pattern Matching mit Java
 
+Es gibt zwei Beispiele:
+* Implementierung einer LinkedList mit Pattern Matching
+* Implementierung eines Telefontarif-Rechners mit Patter Matching
+
+## LinkedList
+
+Implementierung einer LinkedList mit algebraischen Datentypen in Java. Inspiriert durch [LinkedList-Beispiel]( https://github.com/MBoegers/TreeExperiments/tree/main/SingleLinkedListJFP/src/main/java/io/github/mboegers/list/jfp) von [Merlin Bögershausen](https://github.com/MBoegers).
+
+### Aufgabenstellung
+
+Die LinkedList ist einmal objektorientiert (Package de.sippsack.list.oo) und einmal funktional (Package de.sippsack.list.fp) implementiert. Bei der funktionalen Programmierung müssen die Funktionen `head`, `tail` und `contains` noch implementiert werden.
+
+## BadTelefon
+
 Es gibt verschiedene Packages:
 
-## de.sippsack.badtelefon.v0
+### de.sippsack.badtelefon.v0
 
 * Ausgangsbeispiel
 * einfacher Telefontarif-Rechner
@@ -10,14 +24,14 @@ Es gibt verschiedene Packages:
 * Pseudo-Enumeration mit Integer-Konstanten in Tarif
 * keine wirkliche Domänenstruktur, Berechnungslogik komplett außerhalb
 
-## de.sippsack.badtelefon.v1
+### de.sippsack.badtelefon.v1
 
 * ein Refactoring von v0: objektorientierter Lösungsansatz
 * eigene Domänentypen für die Tarifarten
 * Geschäftslogik in Domänenklassen (Strategie-Muster)
 * Einsatz der Schablonenmethode zur Vermeidung von Redundanzen
 
-## de.sippsack.badtelefon.v2
+### de.sippsack.badtelefon.v2
 
 * Lösungsansatz mit dem **Visitor-Pattern**
 * bisheriger Ansatz in OOP, wenn man die Klassen selbst nicht ändern konnte und/oder wenn man parallel alternative Algorithmen (
