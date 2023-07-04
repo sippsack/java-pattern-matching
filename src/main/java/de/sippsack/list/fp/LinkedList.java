@@ -1,5 +1,7 @@
 package de.sippsack.list.fp;
 
+import java.util.Objects;
+
 public sealed interface LinkedList<T> {
     record Element<T>(T value, LinkedList<T> next) implements LinkedList<T> {
         @Override
@@ -21,6 +23,7 @@ public sealed interface LinkedList<T> {
         System.out.println(list);
         System.out.println(head(list));
         System.out.println(tail(list));
+        System.out.println(tail(LinkedList.of(1)));
         System.out.println(contains(5, list));
         System.out.println(contains(1, list));
     }
@@ -37,14 +40,24 @@ public sealed interface LinkedList<T> {
     }
 
     static <T> T head(LinkedList<T> list) {
-        return null;
+        return switch(list) {
+            case Empty<T> _ -> throw new IndexOutOfBoundsException("Liste ist leer");
+            case Element<T>(T value, _) -> value;
+        };
     }
 
     static <T> LinkedList<T> tail(LinkedList<T> list) {
-        return LinkedList.of();
+        return switch (list) {
+            case Empty<T> e -> e;
+            case Element<T>(_, var next) -> next;
+        };
     }
 
     static <T> boolean contains(T value, LinkedList<T> list) {
-        return false;
+        return switch (list) {
+            case Empty _ -> false;
+            case Element<T>(T v, _) when Objects.equals(v, value) -> true;
+            case Element<T>(_, var tail) -> contains(value, tail);
+        };
     }
 }
