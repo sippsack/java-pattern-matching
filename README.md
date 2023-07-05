@@ -38,6 +38,11 @@ Es gibt verschiedene Packages:
   zweiter Visitor) umsetzen muss
 * Achtung: hier haben wir eine Art generischer Visitor statt überladene visit-Methode, wie beim GoF-Buch beschrieben
 
+### de.sippsack.badtelefon.v3
+
+* Ausgangslage für Implementierung des Pattern Matching
+* Umbau in eine Sealed Class Hierarchie, Records, Pattern Matching for switch
+
 ### Lösungsschritte
 
 Wir könnten von verschiedenen Stellen (v0, v1 oder v2) beginnen. Hier starten wir aufgrund des besseren roten Fadens mit v2. Dabei werden wir den Visitor durch Pattern Matching ersetzen, dabei switch-Expressions, Pattern Matching for switch mit Type Patterns (Pattern Matching for instanceof), Sealed Classes und Records.

@@ -15,6 +15,7 @@ public sealed interface LinkedList<T> {
         }
     }
 
+    static LinkedList EMPTY = new Empty<>();
 
     public static void main(String[] args) {
         LinkedList<Integer> list = of(1, 2, 3);
@@ -27,9 +28,9 @@ public sealed interface LinkedList<T> {
 
     @SafeVarargs
     static <T> LinkedList<T> of(T... values) {
-        if (values.length == 0) return new LinkedList.Empty<>();
+        if (values.length == 0) return LinkedList.EMPTY;
 
-        LinkedList<T> current = new LinkedList.Empty<>();
+        LinkedList<T> current = LinkedList.EMPTY;
         for (int i = values.length - 1; i >= 0; i--) {
             current = new LinkedList.Element<>(values[i], current);
         }
@@ -37,14 +38,17 @@ public sealed interface LinkedList<T> {
     }
 
     static <T> T head(LinkedList<T> list) {
+        // TODO
         return null;
     }
 
     static <T> LinkedList<T> tail(LinkedList<T> list) {
+        // TODO
         return LinkedList.of();
     }
 
     static <T> boolean contains(T value, LinkedList<T> list) {
+        // TODO
         return false;
     }
 }

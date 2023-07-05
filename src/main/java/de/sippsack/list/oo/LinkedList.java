@@ -22,7 +22,6 @@ public class LinkedList<T> implements List<T> {
         System.out.println(list.tail());
         System.out.println(list.contains(5));
         System.out.println(list.contains(1));
-
     }
 
     @SafeVarargs
